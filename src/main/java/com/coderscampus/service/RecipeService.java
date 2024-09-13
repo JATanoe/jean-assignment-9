@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
@@ -18,56 +17,44 @@ public class RecipeService {
 
 	private List<Recipe> recipes = new ArrayList<>();
 
-	String[] HEADERS = { "Cooking Minutes", "Dairy Free", "Gluten Free", "Instructions", "Preparation Minutes",
-			"Price Per Serving", "Ready In Minutes", "Servings", "Spoonacular Score", "Title", "Vegan", "Vegetarian" };
-
-	public void loadRecipes() throws IOException {
+	public void init() throws IOException {
 		Reader in = new FileReader("recipes.txt");
 
+		String[] HEADERS = { "Cooking Minutes", "Dairy Free", "Gluten Free", "Instructions", "Preparation Minutes",
+				"Price Per Serving", "Ready In Minutes", "Servings", "Spoonacular Score", "Title", "Vegan",
+				"Vegetarian" };
+
 		CSVFormat csvFormat = CSVFormat.DEFAULT.builder()
-		        .setHeader(HEADERS)
-				.setSkipHeaderRecord(true)
-				.build();
+								.setHeader(HEADERS)
+								.setSkipHeaderRecord(true)
+								.build();
 
 		Iterable<CSVRecord> records = csvFormat.parse(in);
 
 		for (CSVRecord record : records) {
-			recipes.add(new Recipe(
-				Integer.parseInt(record.get("cookingMinutes")), 
-				Boolean.parseBoolean(record.get("dairyFree")),
-				Boolean.parseBoolean(record.get("glutenFree")), 
-				record.get("instructions"),
-				Double.parseDouble(record.get("preparationMinutes")),
-				Double.parseDouble(record.get("pricePerServing")), 
-				Integer.parseInt(record.get("readyInMinutes")),
-				Integer.parseInt(record.get("servings")), 
-				Double.parseDouble(record.get("spoonacularScore")),
-				record.get("title"), 
-				Boolean.parseBoolean(record.get("vegan")),
-				Boolean.parseBoolean(record.get("vegetarian"))
-			));
+			Recipe recipe = new Recipe();
+
+			recipe.setCookingMinutes(record.get(0));
+			recipe.setDairyFree(record.get(1));
+			recipe.setGlutenFree(record.get(2));
+			recipe.setInstructions(record.get(3));
+			recipe.setPreparationMinutes(record.get(4));
+			recipe.setPricePerServing(record.get(5));
+			recipe.setReadyInMinutes(record.get(6));
+			recipe.setServings(record.get(7));
+			recipe.setSpoonacularScore(record.get(8));
+			recipe.setTitle(record.get(9));
+			recipe.setVegan(record.get(10));
+			recipe.setVegetarian(record.get(11));
+
+			System.out.println("Loaded recipe: " + recipe.toString());
+
+			this.recipes.add(recipe);
 		}
 	}
 
-	public List<Recipe> getAllRecipes() {
-		System.out.println(recipes);
+	public List<Recipe> getRecipes() {
 		return recipes;
-	}
-
-	public List<Recipe> getGlutenFreeRecipes() {
-		return recipes.stream().filter(Recipe::getGlutenFree).collect(Collectors.toList());
-	}
-
-	public List<Recipe> getVeganRecipes() {
-		return recipes.stream().filter(Recipe::getVegan).collect(Collectors.toList());
-	}
-
-	public List<Recipe> getVeganAndGlutenFreeRecipes() {
-		return recipes.stream().filter(r -> r.getVegan() && r.getGlutenFree()).collect(Collectors.toList());
-	}
-
-	public List<Recipe> getVegetarianRecipes() {
-		return recipes.stream().filter(Recipe::getVegetarian).collect(Collectors.toList());
 	}
 
 }
