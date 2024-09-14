@@ -17,34 +17,29 @@ public class RecipeController {
 		this.recipeService = recipeService;
 	}
 
-	@GetMapping("")
-	public void home() throws IOException {
-		recipeService.loadData();
+	@GetMapping("/all-recipes")
+	public List<String> allRecipes() throws IOException {
+		return recipeService.getAllRecipes();
 	}
 
-//	@GetMapping("/all-recipes")
-//	public List<String> allRecipes() throws IOException {
-//		return recipeService.getAllRecipes();
-//	}
-//
-//	@GetMapping("/gluten-free")
-//	public List<String> glutenFreeRecipes() throws IOException {
-//		return recipeService.getGlutenFreeRecipes();
-//	}
-//
-//	@GetMapping("/vegan")
-//	public List<String> veganRecipes() throws IOException {
-//		return recipeService.getVeganRecipes();
-//	}
-//
-//	@GetMapping("/vegan-and-gluten-free")
-//	public List<String> veganAndGlutenFreeRecipes() throws IOException {
-//		return recipeService.getVeganAndGlutenFreeRecipes();
-//	}
-//
-//	@GetMapping("/vegetarian")
-//	public List<String> vegetarianRecipes() throws IOException {
-//		return recipeService.getVegetarianRecipes();
-//	}
+	@GetMapping("/gluten-free")
+	public List<String> glutenFreeRecipes() throws IOException {
+		return recipeService.getGlutenFreeRecipes();
+	}
+
+	@GetMapping("/vegan")
+	public List<String> veganRecipes() throws IOException {
+		return recipeService.getVeganRecipes();
+	}
+
+	@GetMapping("/vegan-and-gluten-free")
+	public List<String> veganAndGlutenFreeRecipes() throws IOException {
+		return recipeService.getVeganAndGlutenFreeRecipes();
+	}
+
+	@GetMapping("/vegetarian")
+	public List<String> vegetarianRecipes() throws IOException {
+		return recipeService.getVegetarianRecipes();
+	}
 
 }
