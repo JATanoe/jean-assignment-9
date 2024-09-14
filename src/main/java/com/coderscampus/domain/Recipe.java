@@ -19,24 +19,24 @@ public class Recipe {
 		return cookingMinutes;
 	}
 
-	public void setCookingMinutes(String cookingMinutes) {
-		this.cookingMinutes = Integer.parseInt(cookingMinutes);
+	public void setCookingMinutes(Integer cookingMinutes) {
+		this.cookingMinutes = cookingMinutes;
 	}
 
 	public Boolean getDairyFree() {
 		return dairyFree;
 	}
 
-	public void setDairyFree(String dairyFree) {
-		this.dairyFree = Boolean.parseBoolean(dairyFree);
+	public void setDairyFree(Boolean dairyFree) {
+		this.dairyFree = dairyFree;
 	}
 
 	public Boolean getGlutenFree() {
 		return glutenFree;
 	}
 
-	public void setGlutenFree(String glutenFree) {
-		this.glutenFree = Boolean.parseBoolean(glutenFree);
+	public void setGlutenFree(Boolean glutenFree) {
+		this.glutenFree = glutenFree;
 	}
 
 	public String getInstructions() {
@@ -51,40 +51,40 @@ public class Recipe {
 		return preparationMinutes;
 	}
 
-	public void setPreparationMinutes(String preparationMinutes) {
-		this.preparationMinutes = Double.parseDouble(preparationMinutes);
+	public void setPreparationMinutes(Double preparationMinutes) {
+		this.preparationMinutes = preparationMinutes;
 	}
 
 	public Double getPricePerServing() {
 		return pricePerServing;
 	}
 
-	public void setPricePerServing(String pricePerServing) {
-		this.pricePerServing = Double.parseDouble(pricePerServing);
+	public void setPricePerServing(Double pricePerServing) {
+		this.pricePerServing = pricePerServing;
 	}
 
 	public Integer getReadyInMinutes() {
 		return readyInMinutes;
 	}
 
-	public void setReadyInMinutes(String readyInMinutes) {
-		this.readyInMinutes = Integer.parseInt(readyInMinutes);
+	public void setReadyInMinutes(Integer readyInMinutes) {
+		this.readyInMinutes = readyInMinutes;
 	}
 
 	public Integer getServings() {
 		return servings;
 	}
 
-	public void setServings(String servings) {
-		this.servings = Integer.parseInt(servings);
+	public void setServings(Integer servings) {
+		this.servings = servings;
 	}
 
 	public Double getSpoonacularScore() {
 		return spoonacularScore;
 	}
 
-	public void setSpoonacularScore(String spoonacularScore) {
-		this.spoonacularScore = Double.parseDouble(spoonacularScore);
+	public void setSpoonacularScore(Double spoonacularScore) {
+		this.spoonacularScore = spoonacularScore;
 	}
 
 	public String getTitle() {
@@ -99,25 +99,33 @@ public class Recipe {
 		return vegan;
 	}
 
-	public void setVegan(String vegan) {
-		this.vegan = Boolean.parseBoolean(vegan);
+	public void setVegan(Boolean vegan) {
+		this.vegan = vegan;
 	}
 
 	public Boolean getVegetarian() {
 		return vegetarian;
 	}
 
-	public void setVegetarian(String vegetarian) {
-		this.vegetarian = Boolean.parseBoolean(vegetarian);
+	public void setVegetarian(Boolean vegetarian) {
+		this.vegetarian = vegetarian;
 	}
 
 	@Override
 	public String toString() {
-		return "Recipe [cookingMinutes=" + cookingMinutes + ", dairyFree=" + dairyFree + ", glutenFree=" + glutenFree
-				+ ", instructions=" + instructions + ", preparationMinutes=" + preparationMinutes + ", pricePerServing="
-				+ pricePerServing + ", readyInMinutes=" + readyInMinutes + ", servings=" + servings
-				+ ", spoonacularScore=" + spoonacularScore + ", title=" + title + ", vegan=" + vegan + ", vegetarian="
-				+ vegetarian + "]";
+		return "Recipe{" +
+				"cookingMinutes=" + cookingMinutes +
+				", dairyFree=" + dairyFree +
+				", glutenFree=" + glutenFree +
+				", instructions='" + instructions + '\'' +
+				", preparationMinutes=" + preparationMinutes +
+				", pricePerServing=" + pricePerServing +
+				", readyInMinutes=" + readyInMinutes +
+				", servings=" + servings +
+				", spoonacularScore=" + spoonacularScore +
+				", title='" + title + '\'' +
+				", vegan=" + vegan +
+				", vegetarian=" + vegetarian +
+				'}';
 	}
-
 }
