@@ -23,12 +23,11 @@ public class RecipeService {
 
 	@PostConstruct
 	public void loadRecipes() throws IOException {
-
 		Iterable<CSVRecord> records = fileService.readFile();
 
 		for (CSVRecord record : records) {
 			Recipe recipe = new Recipe();
-					
+
 			recipe.setCookingMinutes(Integer.parseInt(record.get(0)));
 			recipe.setDairyFree(Boolean.parseBoolean(record.get(1)));
 			recipe.setGlutenFree(Boolean.parseBoolean(record.get(2)));
@@ -46,37 +45,32 @@ public class RecipeService {
 		}
 	}
 
-	public List<String> getAllRecipes() throws IOException {
+	public List<Recipe> getAllRecipes() throws IOException {
 		return recipes.stream()
-				.map(Recipe::toString)
 				.collect(Collectors.toList());
 	}
 
-	public List<String> getGlutenFreeRecipes() throws IOException {
+	public List<Recipe> getGlutenFreeRecipes() throws IOException {
 		return recipes.stream()
 				.filter(Recipe::getGlutenFree)
-				.map(Recipe::toString)
 				.collect(Collectors.toList());
 	}
 
-	public List<String> getVeganRecipes() throws IOException {
+	public List<Recipe> getVeganRecipes() throws IOException {
 		return recipes.stream()
 				.filter(Recipe::getVegan)
-				.map(Recipe::toString)
 				.collect(Collectors.toList());
 	}
 
-	public List<String> getVeganAndGlutenFreeRecipes() throws IOException {
+	public List<Recipe> getVeganAndGlutenFreeRecipes() throws IOException {
 		return recipes.stream()
 				.filter(recipe -> recipe.getVegan() && recipe.getGlutenFree())
-				.map(Recipe::toString)
 				.collect(Collectors.toList());
 	}
 
-	public List<String> getVegetarianRecipes() throws IOException {
+	public List<Recipe> getVegetarianRecipes() throws IOException {
 		return recipes.stream()
 				.filter(Recipe::getVegetarian)
-				.map(Recipe::toString)
 				.collect(Collectors.toList());
 	}
 

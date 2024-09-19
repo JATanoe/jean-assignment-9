@@ -3,6 +3,7 @@ package com.coderscampus.web;
 import java.io.IOException;
 import java.util.List;
 
+import com.coderscampus.domain.Recipe;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,27 +19,27 @@ public class RecipeController {
 	}
 
 	@GetMapping("/all-recipes")
-	public List<String> allRecipes() throws IOException {
+	public List<Recipe> allRecipes() throws IOException {
 		return recipeService.getAllRecipes();
 	}
 
 	@GetMapping("/gluten-free")
-	public List<String> glutenFreeRecipes() throws IOException {
+	public List<Recipe> glutenFreeRecipes() throws IOException {
 		return recipeService.getGlutenFreeRecipes();
 	}
 
 	@GetMapping("/vegan")
-	public List<String> veganRecipes() throws IOException {
+	public List<Recipe> veganRecipes() throws IOException {
 		return recipeService.getVeganRecipes();
 	}
 
 	@GetMapping("/vegan-and-gluten-free")
-	public List<String> veganAndGlutenFreeRecipes() throws IOException {
+	public List<Recipe> veganAndGlutenFreeRecipes() throws IOException {
 		return recipeService.getVeganAndGlutenFreeRecipes();
 	}
 
 	@GetMapping("/vegetarian")
-	public List<String> vegetarianRecipes() throws IOException {
+	public List<Recipe> vegetarianRecipes() throws IOException {
 		return recipeService.getVegetarianRecipes();
 	}
 
