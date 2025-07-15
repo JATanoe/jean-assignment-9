@@ -46,8 +46,7 @@ public class RecipeService {
 	}
 
 	public List<Recipe> getAllRecipes() throws IOException {
-		return recipes.stream()
-				.collect(Collectors.toList());
+		return new ArrayList<>(recipes);
 	}
 
 	public List<Recipe> getGlutenFreeRecipes() throws IOException {

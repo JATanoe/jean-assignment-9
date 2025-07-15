@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import com.coderscampus.service.FileService;
 
 @Configuration
-public class JeanAssignment9Configuration {
+public class WebConfig {
 	
 	@Bean 
 	public FileService fileService () {
